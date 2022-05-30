@@ -1,0 +1,59 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .optionWrapper{
+    transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  }
+
+  .myHover{
+    transition: all 0.4s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  }
+  
+  .myHover:hover{
+    background-color: #0c9ef3 !important;
+    color: #fff;
+  }
+
+  .highlighted{
+    border: 3px solid #4585d6;
+}
+
+/* issue for check box */
+
+/* label {
+  padding: 0px;
+} */
+
+.cardType {
+  position: absolute;
+  top: 0px;
+  left: 78%;
+}
+
+.pa_title {
+  margin-left: 32px;
+}
+
+.item11 {
+  width: 350px !important;
+  margin-right: 25px !important;
+}
+
+.USD {
+  background-color: #8aaedd;
+}
+
+.EUR {
+  background-color: #84a6d3;
+}
+
+.GBP {
+  background-color: #84a6d3;
+}

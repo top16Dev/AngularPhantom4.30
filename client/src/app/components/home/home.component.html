@@ -1,0 +1,794 @@
+<!-- Start smart cup Section -->
+<div class="smartcup-outer" >
+  <!-- Start Confirm Language Section -->
+  <div id="confirm-language" *ngIf = "showConfirm">
+    <div class="container">
+      <a class="btn-confirm" (click) = "confirm()" href="">CONFIRM</a> We found your location as {{myCountry}}
+      <a style="cursor: pointer;" class="lang-switch-btn" (click) = "switchEn()"> SWITCH TO ENGLISH </a> <button class="close-btn" id="hidediv" (click) = "closeConfirm()"><i
+          class="fa fa-times"></i></button>
+    </div>
+  </div>
+  <!-- End Confirm Language Section -->
+
+  <!-- Start Main Content Section -->
+  <div id="main-outer-wrapper">
+
+    <!-- Start Header Section -->
+    <section class="sc-header">
+      <div class="container">
+        <!-- Start Popup language Section -->
+        <div class="lang-dropdown">
+          <button data-toggle="collapse" href="#language-dropdown"><img src="{{flagImage}}"/> {{myCurrency}} <i
+              class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="collapse" id="language-dropdown">
+          <button class="close-btn" data-toggle="collapse" href="#language-dropdown"><i
+              class="fa fa-times"></i></button>
+          <div class="lang-and-search">
+            <h4>Country / Region</h4>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text" aria-label="Number" matInput [formControl]="myControlcountry" [matAutocomplete]="autoc" placeholder="Select Country" [(ngModel)] = "myCountry">
+                <mat-autocomplete #autoc="matAutocomplete" >
+                  <mat-option *ngFor="let country of filteredCountry | async" [value]="country" class="myHover" (click) = "select()">
+                    {{country}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+            <h4>Language</h4>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Select Language" aria-label="Number" matInput [formControl]="myControlLanguage" [matAutocomplete]="auto" [(ngModel)] = "myLanguage">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredLanguage | async" class="myHover" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+
+            <h4>Currency</h4>
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Select Currency" aria-label="Number" matInput [formControl]="myControlcurrency" [(ngModel)] = "myCurrency"     [matAutocomplete]="auto3">
+                <mat-autocomplete #auto3="matAutocomplete">
+                  <mat-option *ngFor="let currency of filteredcurrencies  | async; let i = index;" class="myHover" [value]="currency" (click) = "selectCurrency()" [ngClass] = "{'EUR':i === 0, 'USD':i === 1, 'GBP':i === 2}">
+                    {{currency}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </form>
+            <button class="btn blue-btn" data-toggle="collapse" href="#language-dropdown" (click) = "confirm()" id="save-btn">SAVE CHANGES</button>
+            <a style="cursor: pointer;" (click) = "switchEn()" class="switch-lang">SWITCH TO ENGLISH</a>
+
+
+          </div>
+        </div>
+        <!-- End Popup language Section -->
+
+        <!-- Start Logo and Heading Section -->
+        <div class="smartcuplogo"><a href="index.html" title="smartcup"><img src="../assets/images/smartcup/smartcup-logo.jpg" alt="smartcup" /></a></div>
+        <h1>Introducing the SmartCup - The smart way to stay hydrated</h1>
+        <h2>The revolutionary cup that connects to your smartphone</h2>
+        <!-- End Logo and Heading Section -->
+
+      </div>
+    </section>
+
+    <!-- Start Introduction Section -->
+    <section class="sc-video-section">
+      <div class="container">
+
+        <div class="col-md-6 col-xs-12 ">
+          <a href=""><img class="img-responsive" src="../assets/images/smartcup/video-frame.png" alt="smartcup" /> </a>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+
+          <ul>
+            <li><img src="../assets/images/smartcup/cup-icon.png" alt="smartcup" /> Provides personalized hydration advice</li>
+            <li><img src="../assets/images/smartcup/smily-icon.png" alt="smartcup" /> Real-time on-cup screen updates</li>
+            <li><img src="../assets/images/smartcup/thumb-icon.png" alt="smartcup" /> Set drinking preferences and form a habit</li>
+          </ul>
+
+          <a [ngx-scroll-to]="'#scroll-bundles'" [ngx-scroll-to-duration] = "1500" class="btn blue-btn">Get SmartCup Right Now</a>
+
+        </div>
+
+        <div class="clear clearfix"></div>
+
+        <div class="featured-in"><span>Featured In</span> </div>
+        <div class="col-md-3 col-xs-6 col-xs-12"><img src="../assets/images/smartcup/gear-logo.png" alt="gear" /></div>
+        <div class="col-md-3 col-xs-6 col-xs-12"><img src="../assets/images/smartcup/geek-logo.png" alt="geek" /></div>
+        <div class="col-md-3 col-xs-6 col-xs-12"><img src="../assets/images/smartcup/techtimes-logo.png" alt="techtimes-logo" />
+        </div>
+        <div class="col-md-3 col-xs-6 col-xs-12"><img src="../assets/images/smartcup/gadgets-360-logo.png"
+            alt="gadgets-360-logo" /></div>
+
+
+
+      </div>
+    </section>
+    <!-- End Introduction Section -->
+    
+    <!-- Start About Section -->
+    <section class="sc-cutting-edge-section">
+      <div class="container">
+
+        <div class="heading-title">
+          <h2>Cutting-edge technology designed to improve your water consumption</h2>
+          <p>The latest liquid measurement technology within the SmartCup will record your fluid intake, with
+            information<br> available on the cup screen or in the smartphone app. </p>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+
+          <ul>
+
+            <li>
+              <img src="../assets/images/smartcup/blue-checkbox.png" alt="smartcup" />
+              <h3>Water consumption tracking</h3>
+              <p>The smart technology accurately tracks water consumption to provide water intake reminders.</p>
+            </li>
+
+            <li>
+              <img src="../assets/images/smartcup/blue-checkbox.png" alt="smartcup" />
+              <h3>Stale water warning</h3>
+              <p>The intelligent cup will warn you when it is time to change your water.</p>
+            </li>
+
+            <li>
+              <img src="../assets/images/smartcup/blue-checkbox.png" alt="smartcup" />
+              <h3>A long battery life</h3>
+              <p>The impressive battery lasts for up to 40 days if used for 10 hours per day.</p>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 ">
+          <img src="../assets/images/smartcup/cutting-edge-technology.jpg" class="img-responsive"
+            alt="cutting-edge-technology" />
+        </div>
+
+
+        <div class="light-grey-block">
+
+          <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <a [ngx-scroll-to]="'#scroll-bundles'" [ngx-scroll-to-duration] = "1500" class="btn blue-btn">Get SmartCup Right Now</a>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12 ">
+            <h4>The smart way to stay hyrdated</h4>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- End About Section -->
+    
+    <!-- Start devices Section -->
+    <section class="devices-slod-section">
+      <div class="container">
+        <h2>Over <span>50,000</span> Devices Sold Every Month!</h2>
+      </div>
+    </section>
+    <!-- End devices Section -->
+
+    <!-- Start features Section -->
+    <section class="sc-syncs-devices-section">
+      <div class="container">
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+
+            <div class="item active">
+              <div class="col-md-6 col-sm-12 col-xs-12 ">
+                <img src="../assets/images/smartcup/syncs-devices.jpg" class="img-responsive" alt="syncs-devices" />
+              </div>
+
+              <div class="col-md-6 col-sm-12 col-xs-12 ">
+
+                <h2>Syncs with your device</h2>
+                <h5>SmartCup will sync with your Android or iOS phone or <br>
+                  tablet, to provide and store fluid consumption data</h5>
+
+                <div class="feedback-post">
+                  <div class="quote-icons"><img src="../assets/images/smartcup/comm-icon.png" alt="smartcup" /></div>
+                  <ul>
+                    <li>
+                      <img class="profile-pic" src="../assets/images/smartcup/sylvia-mcintosh.jpg" alt="sylvia-mcintosh" />
+                      <h4>Sylvia Mcintosh</h4>
+                      <h6>Ryerson RTA New Media</h6>
+                    </li>
+
+                    <li class="align-right">
+                      <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+                      <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+                      <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+                      <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+                      <img src="../assets/images/smartcup/grey-star.png" alt="smartcup" />
+                    </li>
+                  </ul>
+                  <p>I regularly use a range of health-related apps through my phone, so I was so excited that the
+                    SmartCup links to apps such as Apple Health, Jawbone and Fitbit.</p>
+                </div>
+
+
+
+
+              </div>
+            </div>
+
+            <div class="item ">
+            
+            
+              <div class="col-md-6 col-sm-12 col-xs-12 sc-pic-rtl pull-right">
+                                  <img src="../assets/images/smartcup/smartcup-temperature.jpg" class="img-responsive" alt="smartcup-temperature" />
+                              </div>
+              
+                              <div class="col-md-6 col-xs-12 col-sm-12 large-heaing-txt">
+
+                                  <h2>A clever temperature measurement feature</h2>
+                                  <h5>The SmartCup will warn you if your drink has a temperature above 55 °C, it will then vibrate when the temperature falls to a safe level.</h5>
+
+                                  <div class="feedback-post">
+                <div class="quote-icons left-align"><img src="../assets/images/smartcup/comm-icon.png" alt="" /></div>
+                                      <ul>
+                                          <li>
+                                              <img class="profile-pic" src="../assets/images/smartcup/David-Ludlow.jpg" alt="David-Ludlow" />
+                                              <h4>David Ludlow</h4>
+                                              <h6>SAP Labs, LLC</h6>
+                                          </li>
+
+                                          <li class="align-right">
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                          </li>
+                                      </ul>
+                                      <p>This cup is great, it vibrates when the temperature falls to the perfect level, after all, no one likes a lukewarm tea or coffee.</p>
+                                  </div>
+                                  
+
+                              </div>
+              
+
+                          </div>
+
+
+            <div class="item">
+                              <div class="col-md-6 col-xs-12 col-sm-12 ">
+                                  <img src="../assets/images/smartcup/smartcup-waterproof.jpg" class="img-responsive" alt="smartcup-waterproof" />
+                              </div>
+
+                              <div class="col-md-6 col-xs-12 col-sm-12 ">
+
+                                  <h2>A waterproof, eco design</h2>
+                                  <h5>The stylish SmartCup is manufactured using premium tritan, which is an eco-friendly. The cup also benefits from IPX5 waterproof certification, so is easy to clean.</h5>
+
+                                  <div class="feedback-post">
+                 <div class="quote-icons"><img src="../assets/images/smartcup/comm-icon.png" alt="" /></div>
+                                      <ul>
+                                          <li>
+                                              <img class="profile-pic" src="../assets/images/smartcup/Aleksandra-Hrak.jpg" alt="Aleksandra-Hrak" />
+                                              <h4>Aleksandra Hrak</h4>
+                                              <h6>IM Consulting</h6>
+                                          </li>
+
+                                          <li class="align-right">
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/yellow-star.png" alt="" />
+                                              <img src="../assets/images/smartcup/grey-star.png" alt="" />
+                                          </li>
+                                      </ul>
+                                      <p>The premium materials result in a safe, waterproof and stylish design, which looks great on my desk at work.</p>
+                                  </div>
+                                 
+
+                              </div>
+                          </div>
+
+
+
+          </div>
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </section>
+    <!-- End features Section -->
+    
+    <!-- Start steps Section -->
+    <section class="sc-easy-step-section">
+      <div class="container">
+
+        <div class="heading-title">
+          <h2>Using the SmartCup is as easy as 1, 2, 3</h2>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 ">
+          <img src="../assets/images/smartcup/charge-it-up.jpg" class="img-responsive" alt="smartcup" />
+          <h3><a href="">Charge it up</a></h3>
+          <p>For a full battery, charge for 2 hours using the <strong>360° </strong> USB aluminium wireless charging
+            ring</p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 ">
+          <img src="../assets/images/smartcup/intake.jpg" class="img-responsive" alt="smartcup" />
+          <h3><a href="">Set your daily fluid intake goals</a></h3>
+          <p>Notifications can be sent by cup vibrations and beeps, or a smartphone warning</p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12 ">
+          <img src="../assets/images/smartcup/moniter.jpg" class="img-responsive" alt="smartcup" />
+          <h3><a href="">Monitor your average fluid intake</a></h3>
+          <p>A detailed overview of your drinking routine available via the <strong>SmartCup APP,</strong> or within
+            your preferred health apps
+          </p>
+        </div>
+
+
+
+      </div>
+    </section>
+    <!-- End steps Section -->
+
+    <!-- Start reviews Section -->
+    <section class="sc-highest-customer-section">
+      <div class="container">
+        <h2>Highest Customer Rated <span>SmartCup </span> On The Internet</h2>
+        <p>
+          <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+          <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+          <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+          <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+          <img src="../assets/images/smartcup/yellow-star.png" alt="smartcup" />
+        </p>
+        <img src="../assets/images/smartcup/gear-logo.png" alt="gear-logo" />
+      </div>
+    </section>
+    <!-- End reviews Section -->
+    
+    <!-- Start items product Section -->
+    <section id="scroll-bundles" class="sc-availabe-bundles-section">
+      <div class="container">
+
+        <div class="heading-title">
+          <h2>Now available in <span>BUNDLES</span> </h2>
+          <p>Buy smart with your friends or for a family </p>
+        </div>
+
+        <div class="price-table" >
+            <div class="row">
+
+            </div>
+              <!-- Third item -->
+              <div class="item col-md-4" *ngFor = "let sub of mainAccessories; let i = index;" (click) = "clickCup(i)">
+                <div class="smart-cup-box " [ngClass] = "{'active-box': clickCups[i]=== true}" style="text-align: center;">
+                  
+                  <h2><strong>{{sub.title}}</strong></h2>
+                  <div class="discount-tag">{{(sub.priceMain-sub.priceNew)/sub.priceMain * 100 | number: '1.0-0'}}% <span>SAVE</span></div>
+
+                  <div class="smartcup-pic"><img src="../assets/images/smartcup/smartcup.jpg" alt="smartcup" style="dislpay: inline !important;"/></div>
+                  <div class="smart-cup-price">
+                    <del>{{currencySymbol}}{{sub.priceMain * rate | number: '1.0-0'}} </del>
+                    <h4>{{currencySymbol}}{{sub.priceNew * rate | number: '1.0-0'}}</h4>
+                  </div>
+                  <h3 class="grey-block"><strong>Get {{(sub.priceMain-sub.priceNew)/sub.priceMain * 100 | number: '1.0-0'}}% </strong> off each additional SmartCup</h3>
+
+                  <div class="quantity-block">
+                    <h5>Quantity</h5>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" [disabled]="minus_disabled[i]" (click) = "decrement(i)">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                      <input type="number" (keyup) = "ddd(i)" class="form-control input-number" [(ngModel)]="value[i]" min="1" max="25">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" (click) = "increment(i)">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn order-now-btn" data-toggle="modal"
+                    data-target="#smartcup-popup" (click) = "orderNow(i)">Order Now</button>
+
+
+                  <span class="free-ship"><i class="fas fa-truck"></i><a href=""> + Free </a>Shipping</span>
+
+                </div>
+              </div>
+
+              <div class="item col-md-4" (click) = "clickCup(2)">
+                <div class="smart-cup-box "  [ngClass] = "{'active-box': clickCups[2]=== true}" style="text-align: center;">
+                  
+                  <h2><strong>{{mostPopular.title}}</strong></h2>
+                  <div class="discount-tag">{{(mostPopular.priceMain-mostPopular.priceNew)/mostPopular.priceMain * 100 | number: '1.0-0'}}% <span>SAVE</span></div>
+                  <h6>MOST POPULAR</h6>
+
+                  <div class="smartcup-pic" ><img src="../assets/images/smartcup/smartcup.jpg" alt="smartcup" style="dislpay: inline-block !important;"/></div>
+                  <div class="smart-cup-price">
+                    <del>{{currencySymbol}}{{mostPopular.priceMain * rate | number: '1.0-0'}}</del>
+                    <h4>{{currencySymbol}}{{mostPopular.priceNew * rate | number: '1.0-0'}}</h4>
+                  </div>
+                  <h3 class="grey-block"><strong>Get {{(mostPopular.priceMain-mostPopular.priceNew)/mostPopular.priceMain * 100 | number: '1.0-0'}}%  </strong> off each additional SmartCup</h3>
+
+                  <div class="quantity-block">
+                    <h5>Quantity</h5>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" [disabled]="minus_disabled[2]" (click) = "decrement(2)">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                      <input type="number" (keyup) = "ddd(2)" class="form-control input-number"  [(ngModel)] = "value[2]" min="1" max="25">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" (click) = "increment(2)">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn order-now-btn" data-toggle="modal"
+                    data-target="#smartcup-popup" (click) = "orderNow(2)">Order Now</button>
+
+
+                  <span class="free-ship"><i class="fas fa-truck"></i><a href=""> + Free </a>Shipping</span>
+
+                </div>
+              </div>
+
+        </div>
+
+
+
+      </div>
+    </section>
+    <!-- End items product Section -->
+
+    <!-- Hide checkout section -->
+    <section *ngIf = "showCheckout" id="sc-checkout-section" class="sc-checkout">
+      <div class="container-full">
+
+        <div class="col-md-8 col-sm-12 col-xs-12 my-5 sc-left-sidebar">
+
+          <div class="your-order">
+            <h2>Complete Your Order via <a class="btn blue-btn paypal-btn"><img src="../assets/images/smartcup/text-paypal.png" alt="" /></a></h2>
+
+            <div class="sc-head-title"><span>Or Pay With Credit/Debit Card </span></div>
+
+            <span class="free-ship"><i class="fas fa-truck"></i><a href=""> + Free </a>Shipping</span>
+
+
+            <form id="contact-info" action="">
+              <!-- Start Contact information section for User Left Section-->
+              <div class="products-table mx-auto">
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <!-- <input type="text" id="firstname" class="form-control" required> -->
+                  <!-- <label class="form-control-placeholder" for="name">First Name</label> -->
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="First Name"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Last Name"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Email" [formControl]="email" required></textarea>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Phone"></textarea>
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <!-- End Contact information section for User Left Section-->
+
+              <!-- Start Your shipping Row for User Left Section-->
+              <!-- Your shipping Row -->
+              
+              
+              <div class="sc-head-title"><span>Shipping Details</span></div>
+
+              <div class="products-table">
+                <div class="form-group col-md-6 col-xs-12">
+                  <form class="example-form">
+                      <mat-form-field class="example-full-width">
+                        <input type="text" aria-label="Number" matInput [formControl]="myControlcountry1" [matAutocomplete]="auto6" placeholder="Select Country" [(ngModel)] = "myCountry1">
+                        <mat-autocomplete #auto6="matAutocomplete" >
+                          <mat-option *ngFor="let country1 of filteredCountry1 | async" [value]="country1" class="myHover" (click) = "selectForState(country1)">
+                            {{country1}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </form>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12" style="margin-top: -16px;">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="City"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div id="street-hn-number" class="form-group col-md-12 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Address"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <div class="chosen-wrapper" data-js="custom-scroll">
+                    <form class="example-form">
+                      <mat-form-field class="example-full-width">
+                        <input type="text" aria-label="Number" matInput [formControl]="myControlState" [matAutocomplete]="autoState" placeholder="State">
+                        <mat-autocomplete #autoState="matAutocomplete" >
+                          <mat-option *ngFor="let state of filteredStates | async" [value]="state"  class="myHover" (click) = "selectState(state)">
+                            {{state}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12" style="margin-top: -16px;">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Zip/Postal Code"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <!-- End Your shipping Row for User Left Section-->
+            </form>
+
+          </div>
+
+          <div class="next-button-block">
+            <a data-toggle="collapse" href="#billing-details" class="btn blue-btn" >Next</a>
+          </div>
+
+
+
+          <div class="collapse" id="billing-details">
+            <div class="sc-billing-details">
+
+              <div class="heading" style="position: relative;">
+                  <div class="cardType">
+                    <label class="btn" [ngClass] = "{'highlighted':Q2 == 1}"><input type="radio" name="optradio"  value=1 [(ngModel)]="Q2"  hidden>
+                      <img src="../assets/images/smartcup/visa.jpg" alt="visa" style="display:block; margin: auto; height: 25px;"/></label>
+                    <label class="btn" [ngClass] = "{'highlighted':Q2 == 2}"><input type="radio" name="optradio"  value=2 [(ngModel)]="Q2" hidden><img src="../assets/images/smartcup/mastercard.jpg " alt="master" style="height: 25px;"/></label>
+                  </div>
+                <h3>Billing details </h3> 
+                <p>All  transactions are secure and encrypted.</p>
+              </div>
+
+
+              <!-- Start Billing Row for User Right Section-->
+              <div class="products-table">
+
+                <div class="form-group col-md-12 col-xs-12" style="margin-bottom:0;">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Card Number (no dashes or spaces) " [(ngModel)]="cardnumber" (keyup) = "changeType()" maxlength="19" type="number"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div id="full-name-as-per-card" class="form-group col-md-12 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Full Name (as it appears on your card)"></textarea>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="MM/YY">
+                  </mat-form-field>  
+                </div>
+
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput id="" placeholder="Security Code" type="number" min="1" max="99999" >
+                    <a id="security-code" href="#" data-toggle="tooltip" title="Security Code!">
+                      <i class="far fa-question-circle"></i>
+                    </a>
+                  </mat-form-field>  
+                </div>
+
+                <div class="form-group col-md-12 col-xs-12 accept-policy">
+                  <div class="products-table">
+                    <label class="custom-circle-checker">I have read and agreed to <a href="">Privacy
+                        Policy </a> and <a href="">Terms of Business.</a>
+                      <input type="checkbox" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End billing details -->
+
+            <div class="next-button-block marbottom-0">
+              <a class="btn blue-btn" href="">Checkout</a>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div class="col-md-4 col-sm-8 col-xs-12 ">
+          <div class="sc-right-sidebar">
+
+            <div class="products-table">
+
+              <div class="sc-product-row" *ngFor = "let product of cartProducts; let i = index;" >
+                <div class="sc-prod-img">
+                    <button class="close-btn" href="" (click) = "removeProduct(i)"><i class="fa fa-close"></i></button>
+                    <img src="../assets/images/smartcup/smartcup.jpg" alt="smartcup" />
+                  </div>
+                  <h3>{{product[1]}} <span *ngIf = "product[0]==3">-{{(specialOfferProduct.priceMain-specialOfferProduct.priceNew)/specialOfferProduct.priceMain * 100 | number: '1.0-0'}}%</span> <span class="sc-rtl-price">{{currencySymbol}}{{product[4] * rate | number: '1.0-0'}}</span></h3>
+  
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" [disabled]="cart_disable[product[0]]" (click) = "decrement1(i, product[0])">
+                        <span class="glyphicon glyphicon-minus"></span>
+                      </button>
+                    </span>
+                    <input type="text" class="form-control input-number" value={{cartValue[product[0]]}} min="1" max="25">
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default btn-number" (click) = "increment1(i, product[0])">
+                        <span class="glyphicon glyphicon-plus"></span>
+                      </button>
+                    </span>
+                  </div>
+              </div>
+
+
+              <!-- <div class="sc-product-row">
+                <div class="sc-prod-img">
+                  <button class="close-btn"><i class="fa fa-close"></i></button>
+                  <img src="../assets/images/smartcup/smartcup.jpg" alt="smartcup" />
+                </div>
+                <h3>SmartCup <b>-50%</b><span class="sc-rtl-price">$49.99</span></h3>
+
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus"
+                      data-field="quant[5]">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </button>
+                  </span>
+                  <input type="text" name="quant[5]" class="form-control input-number" value="1" min="1" max="25">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[5]">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                  </span>
+                </div>
+              </div> -->
+            </div>
+            <div class="products-table">
+              <!-- Start Subtotal and Shipping Row for User Right Section-->
+              <table>
+                <tr>
+                  <td>Shipping</td>
+                  <td class="free-price">Free</td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="border-bottom"></td>
+                </tr>
+
+                <tr>
+                  <td class="bold-text"><strong>Total</strong></td>
+                  <td class="total-price"><span>{{currencySymbol}}{{total * rate | number: '1.0-0'}}</span></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Start money back options Section -->
+    <div class="money-back-guarantee">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="guarantee-box">
+          <img src="../assets/images/smartcup/guarantee-seal.png" alt="smartcup" /> 30 Day Money Back Guarantee
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="payment-box">
+          <img src="../assets/images/smartcup/visa.jpg" alt="visasmartcup" />
+          <img src="../assets/images/smartcup/mastercard.jpg" alt="mastercardsmartcup" />
+          <img src="../assets/images/smartcup/paypal.jpg" alt="paypalsmartcup" />
+        </div>
+      </div>
+    </div>
+    
+    <div class="have-quest">Have a Question? <a href="">See Our FAQs</a></div>
+    
+    
+    <!-- End money back options Section -->
+
+  </div>
+  
+  <!-- Start footer Section -->
+  <div class="footer-bg"><img src="../assets/images/smartcup/footer-bg.jpg" alt="smartcup"/></div>
+  <div id="smartcup-footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <ul>
+            <li><a href="">Support</a></li>
+            <li><a href="">Returns</a></li>
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Terms</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-12 col-xs-12 pull-right">
+          <p>© 2019 All Rights Reserved</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End footer Section -->
+</div>
+
+
+<!-- yes/no pop up -->
+<div id="smartcup-popup" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body">
+        <img src="../assets/images/smartcup/smartcup-popup.png" alt="smartcup" />
+        <div class="smartcup-desc">
+          <h3>Act Now and <span>get One More </span></h3>
+          <h2>The <span>SmartCup</span> for {{(specialOfferProduct.priceMain-specialOfferProduct.priceNew)/specialOfferProduct.priceMain * 100 | number: '1.0-0'}}% OFF!</h2>
+          <p>Special Add-on Price <strong>= {{currencySymbol}}{{specialOfferProduct.priceNew * rate | number: '1.0-0'}} </strong> <del>{{currencySymbol}}{{specialOfferProduct.priceMain * rate | number: '1.0-0'}}</del> </p>
+          <button type="button" id="topscroll" class="scroll-checkout btn order-now-btn" value="Show Div"
+            (click)="showDiv()" data-dismiss="modal">Yes, I Want This!</button>
+          <p><a class="scroll-checkout btn order-now-btn" value="Show Div" (click)="showDiv1()"
+              data-dismiss="modal">No, I Don't Want This Offer </a></p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

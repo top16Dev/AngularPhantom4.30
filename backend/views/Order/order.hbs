@@ -1,0 +1,430 @@
+
+	<!-- Start header Section -->
+	<header id="header-section">
+		<div class="container-fluid">
+			<div class="row">
+				<!-- Logo -->
+				<div class="col-md-2">
+					<a href="index.html" title="drone pro"><img src="Order/images/logo.jpg" alt="drone pro" /></a>
+					
+				  <button type="button" class="mobile-menu navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2">
+					<img src="Order/images/mobile-menu.jpg" />
+				  </button> 
+				  
+				</div>
+					
+					<!-- Free Ship Option -->
+					<div class="free-ship col-md-10 col-sm-12 col-xs-12">
+					<div id="navbar2" class="navbar-collapse collapse">
+						<ul>
+							<li><img src="Order/images/plan.png" alt="" /> Free shipping on every order today</li>
+							<li><img src="Order/images/money.png" alt="" /> 30 days money back quarantee</li>
+							<li><img src="Order/images/support.png" alt="" /> Online Support 24/7</li>
+							<li class="lang-select">							
+									<select>
+										<option>ENG</option>
+										<option>DE</option>
+										<option>AU</option>
+									</select>
+									<select>
+										<option>USD</option>
+										<option>EURO</option>
+										<option>INR</option>
+									</select>
+								
+							</li>
+						</ul>
+					
+					<!-- Language and Currency Selection -->
+					
+					
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</header>
+	
+
+	<div class="main-content-wrapper">
+		<div class="container">
+			<!-- Mavic Pro Item Elements -->
+			<!-- Top Rate Products-->
+			<section class="subheader-section">
+				<h1><span>Mavic Pro</span> Adventure Wherever You Go</h1>
+				<img class="drone-pro" src="Order/images/drone.png" alt="" />
+				<div class="steps-block">
+					<div id="owl-demo" class="owl-carousel">
+						<div class="item">
+							<img src="Order/images/camera.png" alt="" /> 4k Camera, 3 Axis<br>Ultra-Wide Camera Angle
+						</div>
+						<div class="item">
+							<img src="Order/images/map.png" alt="" /> Shoot Like A Pro with<br>GPS Mode
+						</div>
+						<div class="item">
+							<img src="Order/images/cog.png" alt="" /> Finely Tuned Control.<br>3 Speed Mode
+						</div>
+						<div class="item last-child">
+							<img src="Order/images/bettery.png" alt="" /> You can expect above <br>45 mins flight time
+						</div>
+
+
+					</div>
+				</div>
+
+			</section>
+
+			<!-- Special Offer Product for User-->
+			{{#if product.specialOffer}}
+			    <section class="special-offer">
+				  <img class="align-left" src="Order/images/spl-offer.png" alt="spl-offer" />
+				  <p><span>Special Offer:</span> {{product.title}} are available at the price of </p><span class="green-price">
+					<del> ${{product.priceMain}} </del> ${{product.priceNew}}</span> <a href="" class="btn discount"> {{product.discount}}% <span>Discount<br>per
+						unit</span></a>
+			   </section>
+		    {{/if}}
+			
+            {{#if product}}
+			<!-- Choose product quantity section for User Left Section-->
+			<section id="quantity-billing-section">
+				<div class="row">
+
+					<div class="col-md-7 col-sm-12 col-xs-12 product-quantity">
+
+						<div class="white-box-bg">
+							<h2>Choose product quantity</h2>
+							<!-- Start Choose product quantity section for User Left Section-->
+							<div class="products-table">
+								<h4>ITEM <span>Total</span></h4>
+								{{#each product.typeQuantity}}
+                                 <!--   products Row Best Seller-->
+								 {{#if bestSeller}}
+								 <div class="products-row active">
+									<label class="custom-circle-checker bold-text">{{this.title}},<span> GET {{this.numberOfFree}}
+											FREE</span> (${{this.eachPrice}}/each)
+										<input type="radio" name="products" checked="checked">
+										<span class="checkmark"></span>
+									</label>
+									<span class="item-price">${{this.totalAmount}}</span>
+									<a class="best-seller" href="">Best Seller</a>
+								 </div>
+								 {{else}}
+									{{#if freeFrontEnd}}
+									<!--  another row for Get free products Row -->
+									<div class="products-row">
+										<label class="custom-circle-checker bold-text">{{this.title}},<span> GET {{this.numberOfFree}}
+												FREE</span> (${{this.eachPrice}}/each)
+											<input type="radio" name="products">
+											<span class="checkmark"></span>
+										</label>
+										<span class="item-price">${{this.totalAmount}}</span>
+									</div>
+									{{else}}
+									<!--   Normal products Row -->
+									<div class="products-row">
+										<label class="custom-circle-checker">{{this.title}} (${{this.eachPrice}}/each)
+											<input type="radio" name="products">
+											<span class="checkmark"></span>
+										</label>
+										<span class="item-price">${{this.totalAmount}}</span>
+									</div>
+									{{/if}}
+								 {{/if}}
+								{{/each}}
+							</div>
+							<!-- End Choose product quantity section for User Left Section-->
+
+							<!-- Start Recommended accessories section for User Left Section-->
+							<h5 class="purple-heading"><i class="fas fa-shopping-basket"></i> Recommended accessories
+							</h5>
+
+							<div class="products-table">
+
+								<!--   accessories Row -->
+								{{#each product.accessories}}
+								<div class="accessories-row active">
+									<div class="products-image"><img src="Order/images/{{this.imagePath}}" alt="carera" /></div>
+									<div class="price-per-pc">
+										<small>Price/pc</small><br>
+										<span>${{this.priceNew}} <sup><del>${{this.priceMain}}</del></sup></span>
+									</div>
+									<div class="desc-qty">
+										<p>{{this.title}} </p>
+										<div class="input-group">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus"
+													data-field="quant[1]">
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</span>
+											<input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="25">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+								</div>
+								{{/each}}
+
+							</div>
+							<!-- End Recommended accessories section for User Left Section-->
+
+
+							<!-- Contact information Row -->
+
+							<h3 class="heading-title">Contact Information</h3>
+
+							<form id="contact-info" action="">
+								<!-- Start Contact information section for User Left Section-->
+								<div class="products-table">
+
+									<div class="form-group col-md-6 col-xs-12">
+										<label class="overly-label" for="name">First Name</label>
+										<input type="text" class="form-control" id="name" placeholder="First Name">
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+
+										<input type="text" class="form-control" id="" placeholder="Last Name">
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+										<label class="overly-label" for="Email">Email</label>
+										<input type="email" class="form-control" id="Email" placeholder="some@mail.com">
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+
+										<input class="form-control" id="phone" name="phone" type="tel">
+									</div>
+
+								</div>
+								<!-- End Contact information section for User Left Section-->
+
+								<!-- Start Your shipping Row for User Left Section-->
+								<!-- Your shipping Row -->
+
+								<h3 class="heading-title">Your Shipping Details</h3>
+
+								<div class="products-table">
+									<div class="form-group col-md-6 col-xs-12">
+
+										<div class="chosen-wrapper" data-js="custom-scroll">
+											<select class="chosen-select" id="country" name="country" data-placeholder="Country">
+											</select>
+										</div>
+
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+										<input type="text" class="form-control" id="" placeholder="Town/City">
+									</div>
+
+									<div id="street-hn-number" class="form-group col-md-12 col-xs-12">
+										<input type="text" class="form-control" placeholder="Street & House Number" />
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+
+										<div class="chosen-wrapper" data-js="custom-scroll">
+											<select name="state" id="state" data-placeholder="State">
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6 col-xs-12">
+										<input type="text" class="form-control" id="name" placeholder="Zip/Postal Code">
+									</div>
+								</div>
+								<!-- End Your shipping Row for User Left Section-->
+							</form>
+
+						</div>
+					</div>
+
+					<!-- Start Billing Section for User Right Section-->
+					<div class="col-md-5 col-sm-12 col-xs-12 billing-section">
+
+						<div id="billing-details" class="white-box-bg">
+							<h2>Your billing Details</h2>
+							<!-- Start Billing Row for User Right Section-->
+							<div class="products-table">
+
+								<div class="form-group col-md-12 col-xs-12" style="margin-bottom:0;">
+									<input type="text" class="form-control" id="card-number"
+										placeholder="Card Number (no dashes or spaces)">
+								</div>
+
+								<div id="full-name-as-per-card" class="form-group col-md-12 col-xs-12">
+									<input type="text" class="form-control"
+										placeholder="Full Name (as it appears on your card)" />
+								</div>
+
+								<div class="form-group col-md-6 col-xs-12">
+
+									<div class="chosen-wrapper" data-js="custom-scroll">
+										<select class="chosen-select" data-placeholder="Month">
+											<option></option>
+											<option>01</option>
+											<option>02</option>
+											<option>03</option>
+											<option>04</option>
+											<option>05</option>
+											<option>06</option>
+											<option>07</option>
+											<option>08</option>
+											<option>09</option>
+											<option>10</option>
+											<option>11</option>
+											<option>12</option>
+										</select>
+									</div>
+
+
+								</div>
+
+								<div class="form-group col-md-6 col-xs-12">
+
+									<div class="chosen-wrapper" data-js="custom-scroll">
+										<select class="chosen-select" data-placeholder="Select year">
+											<option></option>
+											<option>2019</option>
+											<option>2020</option>
+											<option>2021</option>
+											<option>2022</option>
+											<option>2023</option>
+											<option>2024</option>
+											<option>2025</option>
+											<option>2026</option>
+										</select>
+									</div>
+
+								</div>
+
+
+
+
+								<div class="form-group col-md-12 col-xs-12">
+									<input type="text" class="form-control" id="" placeholder="Security Code">
+									<a id="security-code" href="#" data-toggle="tooltip" title="Security Code!">
+										<i class="far fa-question-circle"></i>
+									</a>
+								</div>
+							</div>
+							<!-- End Billing Row for User Right Section-->
+
+							<!-- Start Accept Policy Row for User Right Section-->
+							<div class="form-group col-md-12 col-xs-12 accept-policy">
+								<div class="products-table">
+									<label class="custom-circle-checker">I have read and agreed to <a href="">Privacy
+											Policy </a> and <a href="">Terms of Business.</a>
+										<input type="checkbox" checked="checked">
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+							<!-- End Accept Policy Row for User Right Section-->
+
+							<!-- Start Discount Applied Row for User Right Section-->
+							<div class="products-table">
+								<!-- Start Discount Applied Row for User Right Section-->
+								<div class="discount-applied">
+									<h6>50 <sup>%</sup></h6>
+									<h5>Discount<br>
+										<span>has been applied</span>
+									</h5>
+									<p>You save <b>$294</b> on this order</p>
+								</div>
+								<!-- End Discount Applied Row for User Right Section-->
+
+								<!-- Start Free Shipping Row for User Right Section-->
+								<div class="free-shipping-block">
+									<h6>Free Shipping <br> <span>on every order today</span></h6>
+									<img src="Order/images/white-plan.png" alt="Free Shipping" />
+								</div>
+								<!-- End Free Shipping Row for User Right Section-->
+							</div>
+
+							<div class="products-table">
+								<!-- Start Subtotal and Shipping Row for User Right Section-->
+								<table>
+									<tr>
+										<td>Subtotal</td>
+										<td class="total-price">$613</td>
+									</tr>
+									<tr>
+										<td>Shipping</td>
+										<td class="total-price">$0</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="border-bottom"></td>
+									</tr>
+
+									<tr>
+										<td class="bold-text"><strong>Total</strong></td>
+										<td class="total-price"><del> $613 </del> <span>$306.5</span></td>
+									</tr>
+								</table>
+								<!-- End Subtotal and Shipping Row for User Right Section-->
+
+								<!-- Start Checkout and PayPal Button for User Right Section-->
+								<div class="button-set">
+									<a class="btn checkout-button" href=""><i class="far fa-credit-card"></i>
+										Checkout</a>
+									<a class="btn paypal-button" href="">Checkout with <img src="Order/images/paypal.png"
+											alt="" /></a>
+								</div>
+								<!-- End Checkout and PayPal Button for User Right Section-->
+							</div>
+
+							<!-- Start Secure-and Trust row for User Right Section-->
+							<div class="secure-and-trust">
+								<img src="Order/images/secure.png" alt="" />
+								<p>Shopping on this page is safe and secure, your personal <br>details are strictly
+									protected.</p>
+							</div>
+							<!-- End Secure-and Trust row for User Right Section-->
+						</div>
+					</div>
+				</div>
+			</section>
+			{{else}}
+			  <p>There is no product to show</p>
+            {{/if}}
+		</div>
+	</div>
+
+	<!-- Start Bought Drone row for User Right Section-->
+	<div class="bought-drone">
+		<a href=""><img src="Order/images/white-small-drone.jpg" alt="" />
+			<p>John Doe, United States <br>Bougth <strong>x1 DroneX Pro</strong></p>
+		</a>
+	</div>
+	<!-- End Bought Drone row for User Right Section-->
+
+	<!-- Start Footer Section for User -->
+	<footer id="footer-section">
+		<div class="container">
+			<ul>
+				<li><a href=""> About Us </a> </li>
+				<li><a href="">Contact Us </a> </li>
+				<li><a href="">Impressum </a> </li>
+				<li><a href="">Terms of business</a> </li>
+				<li><a href="">Data privacy statement </a> </li>
+				<li><a href="">Affiliate Program</a> </li>
+			</ul>
+		</div>
+	</footer>
+	<!-- End Footer Section for User -->
+
+	<!-- Start Copyright Section for User -->
+	<div class="copyright-section">
+		<div class="container">
+			<p> Copyright © 2019 DroneX Pro. All Rights Reserved</p>
+		</div>
+	</div>
+	<!-- End Copyright Section for User -->
+	 

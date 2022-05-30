@@ -1,0 +1,31 @@
+{
+  "name": "ncwapp",
+  "version": "1.0.0",
+  "description": "NovAds Commerce Workspace Next Level",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Morteza",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "country-js": "0.0.7",
+    "currency-symbol-map": "^4.0.4",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "express-promise-router": "^3.0.3",
+    "lodash": "^4.17.11",
+    "mocha": "^6.1.4",
+    "mongoose": "^5.5.1",
+    "mongoose-currency": "^0.2.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}

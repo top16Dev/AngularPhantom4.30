@@ -1,0 +1,429 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- Start header Section -->
+<header id="header-section">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-md-2">
+          <a href="index.html" title="drone pro"><img src="../assets/images/logo.jpg" alt="drone pro" /></a>
+  
+          <button type="button" class="mobile-menu navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#navbar2">
+            <img src="../assets/images/mobile-menu.jpg" alt="drone pro"/>
+          </button>
+  
+        </div>
+  
+  
+        <!-- Free Ship Option -->
+        <div class="free-ship col-md-10 col-sm-12 col-xs-12">
+          <div id="navbar2" class="navbar-collapse collapse">
+            <ul>
+              <li><img src="../assets/images/plan.png" alt="Free shipping on every order today" /> Free shipping on every order today</li>
+              <li><img src="../assets/images/money.png" alt="30 days money back quarantee" /> 30 days money back quarantee</li>
+              <li><img src="../assets/images/support.png" alt="Online Support 24/7" /> Online Support 24/7</li>
+              <li class="lang-select">
+                <select>
+                  <option value="ENG">ENG</option>
+                  <option value="DE">DE</option>
+                  <option value="AU">AU</option>
+                </select>
+                <select>
+                  <option value="USD">USD</option>
+                  <option value="EURO">EURO</option>
+                  <option value="GBP">GBP</option>
+                  <option value="AUD">AUD</option>
+                </select>
+  
+              </li>
+            </ul>
+  
+            <!-- Language and Currency Selection -->
+  
+  
+          </div>
+  
+        </div>
+  
+      </div>
+    </div>
+  </header>
+  
+  
+  <div class="main-content-wrapper">
+    <div class="container">
+      <!-- Mavic Pro Item Elements -->
+      <!-- Top rate | number: '1.0-0' Products-->
+      <section class="subheader-section">
+        <h1><span>Mavic Pro</span> Adventure Wherever You Go</h1>
+        <img class="drone-pro" src="../assets/images/drone.png" alt="Mavic Pro" />
+        <div class="steps-block">
+          <div id="owl-demo" class="owl-carousel">
+            <div class="item">
+              <img src="../assets/images/camera.png" alt="4k Camera, 3 Axis" /> 4k Camera, 3 Axis<br>Ultra-Wide Camera Angle
+            </div>
+            <div class="item">
+              <img src="../assets/images/map.png" alt="Shoot Like A Pro with GPS Mode" /> Shoot Like A Pro with<br>GPS Mode
+            </div>
+            <div class="item">
+              <img src="../assets/images/cog.png" alt="Finely Tuned Control" /> Finely Tuned Control.<br>3 Speed Mode
+            </div>
+            <div class="item last-child">
+              <img src="../assets/images/bettery.png" alt="You can expect above 45 mins flight time" /> You can expect above <br>45 mins flight time
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Special Offer Product for User-->
+      <section class="special-offer">
+        <img class="align-left" src="../assets/images/spl-offer.png" alt="Special Offer" />
+        <p><span>Special Offer:</span> {{specialOfferProduct.title}} are available at the price of </p><span class="green-price">
+          <del> {{currencySymbol}}{{specialOfferProduct.priceMain*rate | number: '1.0-0'}} </del> {{currencySymbol}}{{specialOfferProduct.priceNew*rate | number: '1.0-0'}}</span> 
+          <a href="" class="btn discount"> {{specialOfferProduct.discount}}% <span>Discount<br>per unit</span></a>
+      </section>
+  
+      <!-- Choose product quantity section for User Left Section-->
+      <section id="quantity-billing-section">
+        <div class="row">
+  
+          <div class="col-md-7 col-sm-12 col-xs-12 product-quantity">
+  
+            <div class="white-box-bg">
+              <h2>Choose product quantity</h2>
+              <!-- Start Choose product quantity section for User Left Section-->
+              <div class="products-table">
+                <h4>ITEM <span>Total</span></h4>
+                <div class="products-row active">
+                  <label class="custom-circle-checker bold-text">
+                    <div class="pa_title">
+                        {{bestSeller.title}}
+                        <span *ngIf = "bestSeller.numberOfFree">, GET {{bestSeller.numberOfFree}}
+                          FREE</span> 
+                        ({{currencySymbol}}{{bestSeller.eachPrice*rate | number: '1.0-0'}}/each)
+                    </div>
+                    
+                    <input type="radio" name="products" checked="checked" (click) = "cal_Total(0)">
+                    <span class="checkmark"></span>
+                  </label>
+                  <span class="item-price">{{currencySymbol}}{{bestSeller.totalAmount*rate | number: '1.0-0'}}</span>
+                  <a class="best-seller" href="">Best Seller</a>
+                </div>
+  
+                <div class="products-row" *ngFor = "let type of productType;  let i = index" >
+                  <label class="custom-circle-checker bold-text">
+                    <div class="pa_title">
+                        {{type.title}}<span *ngIf = "type.numberOfFree">, GET {{type.numberOfFree}}
+                            FREE</span> ({{currencySymbol}}{{type.eachPrice*rate | number: '1.0-0'}}/each)
+                    </div>
+                    <input type="radio" name="products" (click) = "cal_Total(i+1)">
+                    <span class="checkmark"></span>
+                  </label>
+                  <span class="item-price">{{currencySymbol}}{{type.totalAmount*rate | number: '1.0-0'}}</span>
+                  <a class="best-seller" *ngIf = "type.bestSeller" href="">Best Seller</a>
+                </div>
+  
+  
+              </div>
+              <!-- End Choose product quantity section for User Left Section-->
+  
+              <!-- Start Recommended accessories section for User Left Section-->
+              <h5 class="purple-heading"><i class="fas fa-shopping-basket"></i> Recommended accessories
+              </h5>
+  
+              <div class="products-table">
+  
+                <!--   accessories Row -->
+                <div class="accessories-row"  *ngFor = "let accessory of accessories; let i = index;" [ngClass] = "{'active':i === 0}">
+                  <div class="products-image"><img src="../assets/images/camera.jpg" alt="Camera" /></div>
+                  <div class="price-per-pc">
+                    <small>Price/pc</small><br>
+                    <span>{{currencySymbol}}{{accessory.priceNew*rate | number: '1.0-0'}} <sup><del>{{currencySymbol}}{{accessory.priceMain*rate | number: '1.0-0'}}</del></sup></span>
+                  </div>
+                  <div class="desc-qty">
+                    <p>{{accessory.title}} </p>
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default btn-number" [disabled]="minus_disabled[i]"
+                         (click) = "decrement(i)">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                      <input type="text" class="form-control input-number" value ={{value[i]}}>
+                      <span class="input-group-btn">
+                        <button type="button" (click) = "increment(i)" class="btn btn-default btn-number">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Recommended accessories section for User Left Section-->
+  
+  
+              <!-- Contact information Row -->
+  
+              <h3 class="heading-title">Contact Information</h3>
+  
+              <form id="contact-info" action="">
+                <!-- Start Contact information section for User Left Section-->
+                <div class="products-table">
+                  <div class="form-group col-md-6 col-xs-12">
+                    <!-- <label class="overly-label" for="name">First Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="First Name"> -->
+                    <!-- <mat-form-field appearance="outline" class="example-full-width">
+                      <mat-label>First Name </mat-label>
+                      <input matInput placeholder="First Name ">
+                    </mat-form-field> -->
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="First Name"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Last Name"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Email"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Phone"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                </div>
+                <!-- End Contact information section for User Left Section-->
+  
+                <!-- Start Your shipping Row for User Left Section-->
+                <!-- Your shipping Row -->
+  
+                <h3 class="heading-title">Your Shipping Details</h3>
+  
+                <div class="products-table">
+                  <div class="form-group col-md-6 col-xs-12">
+                      <form class="example-form">
+                          <mat-form-field class="example-full-width">
+                            <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" placeholder="Select Country" [(ngModel)] = "myCountry">
+                            <mat-autocomplete #auto="matAutocomplete" >
+                              <mat-option *ngFor="let option of filteredOptions | async" [value]="option" class="myHover" (click) = "select(option)">
+                                {{option}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+  
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12" style="margin-top: -16px;">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Town/City"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                  <div id="street-hn-number" class="form-group col-md-12 col-xs-12">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Street & House Number"></textarea>
+                    </mat-form-field>
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12">
+  
+                      <form class="example-form">
+                          <mat-form-field class="example-full-width">
+                            <input type="text" aria-label="Number" matInput [formControl]="myControl1" [matAutocomplete]="auto1" placeholder="State">
+                            <mat-autocomplete #auto1="matAutocomplete" >
+                              <mat-option *ngFor="let state of filteredStates | async" [value]="state"  class="myHover" (click) = "selectState(state)">
+                                {{state}}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                        </form>
+                  </div>
+  
+                  <div class="form-group col-md-6 col-xs-12" style="margin-top: -16px;">
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Zip/Postal Code"></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!-- End Your shipping Row for User Left Section-->
+              </form>
+  
+            </div>
+          </div>
+  
+          <!-- Start Billing Section for User Right Section-->
+          <div class="col-md-5 col-sm-12 col-xs-12 billing-section">
+  
+            <div id="billing-details" class="white-box-bg">
+              <h2>Your billing Details</h2>
+              <!-- Start Billing Row for User Right Section-->
+              <div class="products-table">
+  
+                <div class="form-group col-md-12 col-xs-12" style="margin-bottom:0; position: relative;">
+                  <!-- <input type="text" class="form-control"
+                    placeholder="Card Number (no dashes or spaces)" [(ngModel)]="cardnumber" (keyup) = "changeType()" maxlength="19"> -->
+
+                    <!-- <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Card Number (no dashes or spaces) </mat-label>
+                        <input matInput [(ngModel)]="cardnumber" (keyup) = "changeType()" maxlength="19" placeholder="Card Number ">
+                    </mat-form-field>  -->
+                    
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Card Number (no dashes or spaces) " [(ngModel)]="cardnumber" (keyup) = "changeType()" maxlength="19"></textarea>
+                    </mat-form-field>
+                    <!-- <input mdbInput mdbCreditCard #card="mdbCreditCard" id="form1" class="form-control" type="text" [(ngModel)]="cardnumber" (keyup) = "changeType()"> -->
+  
+                  <div class="cardType">
+                    <label class="btn" [ngClass] = "{'highlighted':Q2 == 1}"><input type="radio" name="optradio"  value=1 [(ngModel)]="Q2"  hidden>
+                      <img src="../assets/images/smartcup/visa.jpg" alt="visa" style="display:block; margin: auto; height: 25px;"/></label>
+                    <label class="btn" [ngClass] = "{'highlighted':Q2 == 2}"><input type="radio" name="optradio"  value=2 [(ngModel)]="Q2" hidden><img src="../assets/images/smartcup/mastercard.jpg " alt="master" style="height: 25px;"/></label>
+                  </div>
+                </div>
+  
+                <div id="full-name-as-per-card" class="form-group col-md-12 col-xs-12">
+                    <!-- <mat-form-field appearance="outline" class="example-full-width">
+                        <mat-label>Full Name (as it appears on your card) </mat-label>
+                        <input matInput placeholder="Full Name ">
+                    </mat-form-field>  -->
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Full Name (as it appears on your card)"></textarea>
+                    </mat-form-field>
+                </div>
+  
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="MM/YY">
+                  </mat-form-field>                  
+                </div>
+  
+                <div class="form-group col-md-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput id="" placeholder="Security Code">
+                    <a id="security-code" href="#" data-toggle="tooltip" title="Security Code!">
+                      <i class="far fa-question-circle"></i>
+                    </a>
+                  </mat-form-field>    
+                </div>
+              </div>
+              <!-- End Billing Row for User Right Section-->
+  
+              <!-- Start Accept Policy Row for User Right Section-->
+              <div class="form-group col-md-12 col-xs-12 accept-policy">
+                <div class="products-table">
+                  <label class="custom-circle-checker">
+                    <div class="pa_title">
+                        I have read and agreed to <a href="">Privacy
+                            Policy </a> and <a href="">Terms of Business.</a>
+                    </div>
+                    
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+              <!-- End Accept Policy Row for User Right Section-->
+  
+              <!-- Start Discount Applied Row for User Right Section-->
+              <div class="products-table">
+                <!-- Start Discount Applied Row for User Right Section-->
+                <div class="discount-applied">
+                  <h6>{{discount}} <sup>%</sup></h6>
+                  <h5>Discount<br>
+                    <span>has been applied</span>
+                  </h5>
+                  <p>You save <b>{{currencySymbol}}{{saveMoney*rate | number: '1.0-0'}}</b> on this order</p>
+                </div>
+                <!-- End Discount Applied Row for User Right Section-->
+  
+                <!-- Start Free Shipping Row for User Right Section-->
+                <div class="free-shipping-block">
+                  <h6>Free Shipping <br> <span>on every order today</span></h6>
+                  <img src="../assets/images/white-plan.png" alt="Free Shipping" />
+                </div>
+                <!-- End Free Shipping Row for User Right Section-->
+              </div>
+  
+              <div class="products-table">
+                <!-- Start Subtotal and Shipping Row for User Right Section-->
+                <table>
+                  <tr>
+                    <td>Subtotal</td>
+                    <td class="total-price">{{currencySymbol}}{{subTotal*rate | number: '1.0-0'}}</td>
+                  </tr>
+                  <tr>
+                    <td>Shipping</td>
+                    <td class="total-price">{{currencySymbol}}0</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="border-bottom"></td>
+                  </tr>
+  
+                  <tr>
+                    <td class="bold-text"><strong>Total</strong></td>
+                    <td class="total-price"><del> {{currencySymbol}}{{subTotal*rate | number: '1.0-0'}} </del> <span>{{currencySymbol}}{{Total*rate | number: '1.0-0'}}</span></td>
+                  </tr>
+                </table>
+                <!-- End Subtotal and Shipping Row for User Right Section-->
+  
+                <!-- Start Checkout and PayPal Button for User Right Section-->
+                <div class="button-set">
+                  <a class="btn checkout-button" href=""><i class="far fa-credit-card"></i>
+                    Checkout</a>
+                  <a class="btn paypal-button" href="">Checkout with <img src="../assets/images/paypal.png" alt="Checkout Paypal" /></a>
+                </div>
+                <!-- End Checkout and PayPal Button for User Right Section-->
+              </div>
+  
+              <!-- Start Secure-and Trust row for User Right Section-->
+              <div class="secure-and-trust">
+                <img src="../assets/images/secure.png" alt="safe and secure" />
+                <p>Shopping on this page is safe and secure, your personal <br>details are strictly
+                  protected.</p>
+              </div>
+              <!-- End Secure-and Trust row for User Right Section-->
+            </div>
+          </div>
+        </div>
+      </section>
+  
+    </div>
+  </div>
+  <!-- Start Bought Drone row for User Right Section-->
+  <!-- <div class="bought-drone">
+    <a href=""><img src="../assets/images/white-small-drone.jpg" alt="DroneX" />
+      <p>John Doe, United States <br>Bougth <strong>x1 DroneX Pro</strong></p>
+    </a>
+  </div> -->
+  <!-- End Bought Drone row for User Right Section-->
+  
+  <!-- Start Footer Section for User -->
+  <footer id="footer-section">
+    <div class="container">
+      <ul>
+        <li><a href=""> About Us </a> </li>
+        <li><a href="">Contact Us </a> </li>
+        <li><a href="">Impressum </a> </li>
+        <li><a href="">Terms of business</a> </li>
+        <li><a href="">Data privacy statement </a> </li>
+        <li><a href="">Affiliate Program</a> </li>
+      </ul>
+    </div>
+  </footer>
+  <!-- End Footer Section for User -->
+  
+  <!-- Start Copyright Section for User -->
+  <div class="copyright-section">
+    <div class="container">
+      <p> Copyright © 2019 DroneX Pro. All Rights Reserved</p>
+    </div>
+  </div>
+  <!-- End Copyright Section for User -->
